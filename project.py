@@ -8,7 +8,7 @@ def read_ingredients(file_path):
     with open(file_path, mode='r') as file:
         reader = csv.DictReader(file)
         for row in reader:
-            ingredients[row['ingredient_name']] = {
+            ingredients[row['name']] = {
                 'quantity': float(row['quantity']),
                 'unit': row['unit']
             }
@@ -23,13 +23,20 @@ def read_user_preferences(file_path):
             return yaml.safe_load(file)
         else:
             raise ValueError('Unsupported file format. Use JSON or YAML.')
+        
 
 # Main Function
 def main():
-    # Read data from files
-    available_ingredients = read_ingredients(INGREDIENTS_CSV)
-    user_prefs = read_user_preferences(USER_PREFS_FILE)
     
+    ingredients_file = 'ingredients.csv'  
+    preferences_file = 'preferences.yml'
+    
+    # Read data from files
+    available_ingredients = read_ingredients(ingredients_file)
+    user_prefs = read_user_preferences(preferences_file)
+    
+    print("Available Ingredients:", available_ingredients)
+    print("User Preferences:", user_prefs)
 
 if __name__ == "__main__":
     main()
