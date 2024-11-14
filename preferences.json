@@ -18,6 +18,24 @@
         "fat": 60,
         "fiber": 30
       }
-    }
+    },
+    {
+      "diet": "high-protein",
+      "nutritional_goals": {
+        "calories": 2500,
+        "protein": 150,
+        "carbs": 200,
+        "fat": 80
+        }
+    },
+    {
+      "diet": "low-carb",
+      "nutritional_goals": {
+        "calories": 2000,
+        "protein": 100,
+        "carbs": 100,
+        "fat": 100
+        }
+    }  
   ]
 }
