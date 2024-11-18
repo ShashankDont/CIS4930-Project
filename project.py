@@ -118,7 +118,7 @@ def visualize_nutrition_data(nutrition_summary):
 def main():
     
     ingredients_file = 'ingredients.csv'  
-    preferences_file = 'preferences.yml'
+    preferences_file = 'preferences.json'
 
     # Read data from files
     available_ingredients = read_ingredients(ingredients_file)
