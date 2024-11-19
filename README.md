@@ -9,7 +9,7 @@ analysis.
 3. Ensure you have 'ingredients.csv' and 'preferences.json' in the
 project directory
 4. Run the main script:
-pytho project.py
+python project.py
 ## Running Tests
 To run the unit tests:
 python -m unittest test_project.py
