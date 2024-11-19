@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 
 recipes = {
     "Pasta": {"ingredients" : {"pasta" : 100, "tomato" : 50}, "diet" : "vegetarian"},
-    "Chicken salad" : {"ingredients" : {"chicke" : 150, "lettuce" : 50, "tomato" : 50, "cucumber" : 20, "avocado" : 30}, "diet" : "high-protein"},
+    "Chicken salad" : {"ingredients" : {"chicken" : 150, "lettuce" : 50, "tomato" : 50, "cucumber" : 20, "avocado" : 30}, "diet" : "high-protein"},
     "fruit smoothie" : {"ingredients" : {"banana" : 1, "milk" : 200, "strawberries" : 50, "blueberries" : 30}, "diet" : "vegetarian"},
     "oatmeal" : {"ingredients" : {"oats" : 100, "milk" : 200}, "diet" : "vegan"},
     "Lentil soup" : {"ingredients" : {"lentils" : 100, "carrot" : 2, "spinach" : 50}, "diet" : "vegan"},
@@ -31,8 +31,10 @@ recipes = {
 
 recipe_nutrition = {
         "Pasta": {'calories': 300, 'protein': 10, 'carbs': 50, 'fat': 5, 'fiber': 3},
-        
-
+        "Salad": {'calories': 100, 'protein': 5, 'carbs': 5, 'fat': 0, 'fiber': 1},
+        "Mac and Cheese": {'calories': 500, 'protein': 20, 'carbs': 70, 'fat': 10, 'fiber': 2},
+        "Omlette": {'calories': 500, 'protein': 30, 'carbs': 5, 'fat': 5, 'fiber': 5},
+        "Oxtail": {'calories': 800, 'protein': 20, 'carbs': 10, 'fat': 10, 'fiber': 3},
     }
 
 # Read Ingredients CSV
