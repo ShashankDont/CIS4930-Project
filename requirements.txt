@@ -1,2 +1,7 @@
 numpy
 matplotlib
+matplotlib.pyplot as plt
+csv
+json
+yaml
+random
