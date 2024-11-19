@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 
 recipes = {
     "Pasta": {"ingredients" : {"pasta" : 100, "tomato" : 50}, "diet" : "vegetarian"},
-    "Chicken salad" : {"ingredients" : {"chicke" : 150, "lettuce" : 50, "tomato" : 50, "cucumber" : 20, "avocado" : 30}, "diet" : "high-protein"},
+    "Chicken salad" : {"ingredients" : {"chicken" : 150, "lettuce" : 50, "tomato" : 50, "cucumber" : 20, "avocado" : 30}, "diet" : "high-protein"},
     "fruit smoothie" : {"ingredients" : {"banana" : 1, "milk" : 200, "strawberries" : 50, "blueberries" : 30}, "diet" : "vegetarian"},
     "oatmeal" : {"ingredients" : {"oats" : 100, "milk" : 200}, "diet" : "vegan"},
     "Lentil soup" : {"ingredients" : {"lentils" : 100, "carrot" : 2, "spinach" : 50}, "diet" : "vegan"},
@@ -97,14 +97,22 @@ def generate_shopping_list(meal_recipes, ingredients):
         recipe_ingredients = recipes[recipe_name]["ingredients"]
         for item, required_qty in recipe_ingredients.items():
             unit = ingredients.get(item, {}).get("unit", "units") 
-            available_qty = ingredients.get(item, {}).get("quantity", 0)
+            if item in shopping_list:
+                available_qty = 0
+            else:
+                available_qty = ingredients.get(item, {}).get("quantity", 0)
             
-            if available_qty < required_qty:
+            if available_qty < required_qty:    
                 needed_qty = required_qty - available_qty
-                shopping_list[item] = {
-                    "quantity": shopping_list.get(item, {}).get("quantity", 0) + needed_qty,
-                    "unit": unit
-                }
+                if item in shopping_list:
+                    shopping_list[item]["quantity"] += needed_qty
+                else:
+                    shopping_list[item] = {"quantity": needed_qty, "unit": unit}
+            elif available_qty == required_qty:
+                if item not in shopping_list:
+                    shopping_list[item] = {"quantity": 0, "unit": unit}
+    
+    shopping_list = {item: details for item, details in shopping_list.items() if details["quantity"] > 0}
     return shopping_list
 
 
