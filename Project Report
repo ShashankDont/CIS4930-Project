@@ -1,1 +1,53 @@
+Project Report
+The algorithm we created offers a complete meal planning solution. It combines user preferences, available ingredients, and nutritional goals to generate meal plans, shopping lists, and a nutritional analysis. The design focuses on being simple, flexible, and efficient, making it useful for people with different dietary needs and simplifying meal preparation.
+
+Algorithm Design and Components
+The algorithm consists of several modular components that ensures functionality and clarity. 
+
+Data Input and Parsing:
+Ingredients (CSV): The read_ingredients function parses a CSV file containing ingredient details (name, quantity, unit). CSV was chosen for its simplicity and compatibility with spreadsheets.
+User Preferences (JSON/YAML): The read_user_preferences function supports JSON and YAML formats for dietary preferences and nutritional goals. JSON was selected for its widespread use, and YAML provides a human-readable alternative. This dual-format support ensures flexibility, making the algorithm accessible to users with varying technical capabilities.
+
+Recipe Recommendation:
+The recommend_recipes function matches user preferences (e.g., vegetarian, vegan, non-vegetarian) and available ingredients against a predefined recipe database. Recipes are recommended only if:
+They match the user’s dietary constraints.
+All required ingredients are available in sufficient quantities.
+This ensures personalized meal options and reduces food waste by prioritizing ingredients already on hand.
+
+Meal Plan Generation:
+The create_meal_plan function assigns a recipe to each day of the week from the recommended list. Random selection adds variety while respecting user preferences. This simplifies meal planning and keeps options interesting.
+
+Shopping List Generation:
+The generate_shopping_list function identifies ingredient shortages by comparing recipe needs with available stock. Missing ingredients are compiled into a shopping list, making grocery shopping easier and preventing overstocking.
+
+Nutritional Analysis:
+The analyze_nutrition function calculates:
+Total Weekly Nutrition: Summing nutrients across all planned meals.
+Daily Distribution: Nutrients provided by meals on each day.
+Goal Comparison: Highlights differences between actual intake and user-defined goals.
+This step ensures users are informed about how well their meals align with their nutritional needs, developing healthier eating habits
+
+Visualization:
+The visualize_nutrition_data function creates a bar chart comparing actual nutrient intake against user-defined goals. This makes it easier for users to see how well they are meeting their nutritional targets and identify areas for improvement.
+
+Output:
+The algorithm saves the meal plan and shopping list to a text file for easy access, allowing users to refer back to their plan conveniently.
+
+Reason for Choosing the Algorithm
+Modularity:
+Each part of the algorithm handles a specific task. This makes it easy to understand, debug, and update in the future.
+
+Flexibility:
+The system supports multiple file formats (CSV, JSON, YAML) and a variety of dietary preferences, making it adaptable to different users.
+
+Efficiency:
+Dictionaries are used to store ingredient and recipe data, enabling quick lookups and smooth performance even with large datasets.
+
+User-Centric Design:
+Features like personalized recommendations, nutritional analysis, and visualizations prioritize user needs, making the system practical and helpful.
+
+Scalability:
+The recipe database can be expanded in future versions, allowing the system to grow and handle more recipes dynamically.
+
+In conclusion, this algorithm was chosen because it combines user preferences, available ingredients, and health goals into one easy-to-use system. Its design focuses on being flexible, efficient, and easy to expand in the future. This makes it a strong solution for meal planning that is both practical and user-friendly.
 
