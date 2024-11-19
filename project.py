@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 
 recipes = {
     "Pasta": {"ingredients" : {"pasta" : 100, "tomato" : 50}, "diet" : "vegetarian"},
-    "Chicken salad" : {"ingredients" : {"chicken" : 150, "lettuce" : 50, "tomato" : 50, "cucumber" : 20, "avocado" : 30}, "diet" : "high-protein"},
+    "Chicken salad" : {"ingredients" : {"chicke" : 150, "lettuce" : 50, "tomato" : 50, "cucumber" : 20, "avocado" : 30}, "diet" : "high-protein"},
     "fruit smoothie" : {"ingredients" : {"banana" : 1, "milk" : 200, "strawberries" : 50, "blueberries" : 30}, "diet" : "vegetarian"},
     "oatmeal" : {"ingredients" : {"oats" : 100, "milk" : 200}, "diet" : "vegan"},
     "Lentil soup" : {"ingredients" : {"lentils" : 100, "carrot" : 2, "spinach" : 50}, "diet" : "vegan"},
@@ -30,12 +30,28 @@ recipes = {
 }
 
 recipe_nutrition = {
-        "Pasta": {'calories': 300, 'protein': 10, 'carbs': 50, 'fat': 5, 'fiber': 3},
-        "Salad": {'calories': 100, 'protein': 5, 'carbs': 5, 'fat': 0, 'fiber': 1},
-        "Mac and Cheese": {'calories': 500, 'protein': 20, 'carbs': 70, 'fat': 10, 'fiber': 2},
-        "Omlette": {'calories': 500, 'protein': 30, 'carbs': 5, 'fat': 5, 'fiber': 5},
-        "Oxtail": {'calories': 800, 'protein': 20, 'carbs': 10, 'fat': 10, 'fiber': 3},
-    }
+    "Pasta": {'calories': 300, 'protein': 10, 'carbs': 50, 'fat': 5, 'fiber': 3},
+    "Chicken Salad": {'calories': 400, 'protein': 25, 'carbs': 10, 'fat': 20, 'fiber': 5},
+    "fruit smoothie": {'calories': 200, 'protein': 5, 'carbs': 20, 'fat': 15, 'fiber': 15},
+    "oatmeal": {'calories': 150, 'protein': 15, 'carbs': 20, 'fat': 10, 'fiber': 20},
+    "Lentil Soup": {'calories': 400, 'protein': 25, 'carbs': 10, 'fat': 20, 'fiber': 5},
+    "vegetable stir-fry": {'calories': 250, 'protein': 8, 'carbs': 35, 'fat': 10, 'fiber': 8},
+    "greek salad": {'calories': 220, 'protein': 8, 'carbs': 12, 'fat': 15, 'fiber': 4},
+    "vegetable omelette": {'calories': 300, 'protein': 18, 'carbs': 5, 'fat': 22, 'fiber': 2},
+    "avocado toast": {'calories': 280, 'protein': 6, 'carbs': 30, 'fat': 16, 'fiber': 7},
+    "banana pancakes": {'calories': 350, 'protein': 9, 'carbs': 60, 'fat': 10, 'fiber': 4},
+    "chickpea salad": {'calories': 200, 'protein': 8, 'carbs': 25, 'fat': 8, 'fiber': 6},
+    "vegan burrito": {'calories': 400, 'protein': 12, 'carbs': 55, 'fat': 15, 'fiber': 10},
+    "roasted sweet potatoes": {'calories': 180, 'protein': 2, 'carbs': 40, 'fat': 5, 'fiber': 7},
+    "chicken stir-fry": {'calories': 350, 'protein': 25, 'carbs': 20, 'fat': 15, 'fiber': 5},
+    "grilled salmon": {'calories': 300, 'protein': 35, 'carbs': 0, 'fat': 20, 'fiber': 0},
+    "beef taco bowl": {'calories': 500, 'protein': 30, 'carbs': 60, 'fat': 20, 'fiber': 8},
+    "chicken caesar salad": {'calories': 400, 'protein': 28, 'carbs': 15, 'fat': 20, 'fiber': 3},
+    "shrimp pasta": {'calories': 400, 'protein': 25, 'carbs': 50, 'fat': 15, 'fiber': 3},
+    "overnight oats": {'calories': 250, 'protein': 8, 'carbs': 35, 'fat': 8, 'fiber': 10},
+    "quinoa salad": {'calories': 300, 'protein': 10, 'carbs': 40, 'fat': 10, 'fiber': 7},
+    "turkey sandwich": {'calories': 350, 'protein': 20, 'carbs': 30, 'fat': 15, 'fiber': 3}
+}
 
 # Read Ingredients CSV
 def read_ingredients(file_path):
@@ -92,38 +108,76 @@ def generate_shopping_list(meal_recipes, ingredients):
     return shopping_list
 
 
-# Analyze nutrition based on the meal plan
+# Analyze nutrition based on the meal plan and print results
 def analyze_nutrition(meal_plan, preferences):
     nutrition_summary = {'total': {}, 'daily': {}, 'comparison': {}}
 
+    print("User's Nutritional Preferences:")
+    for nutrient, goal_value in preferences['nutritional_goals'].items():
+        print(f"  {nutrient.capitalize()}: {goal_value} total")
+
+    # Calculate nutritional totals based on the meal plan
     for day, meal in meal_plan.items():
         meal_nutrition = recipe_nutrition.get(meal, {})
         nutrition_summary['daily'][day] = meal_nutrition
         for nutrient, value in meal_nutrition.items():
             nutrition_summary['total'][nutrient] = nutrition_summary['total'].get(nutrient, 0) + value
 
+    # Print out meal plan's nutritional values per day
+    print("\nMeal Plan's Nutritional Values Per Day:")
+    for day, nutrients in nutrition_summary['daily'].items():
+        print(f"  {day}:")
+        for nutrient, value in nutrients.items():
+            print(f"    {nutrient.capitalize()}: {value}")
+
+    # Calculate and compare total nutritional values against user preferences
+    print("\nTotal Nutritional Values for the Meal Plan (average per day):")
     for nutrient, goal_value in preferences['nutritional_goals'].items():
-        actual = nutrition_summary['total'].get(nutrient, 0) / 7
-        difference = goal_value - actual
-        nutrition_summary['comparison'][nutrient] = {'goal': goal_value, 'actual': actual, 'difference': difference}
+        total_nutrient_value = nutrition_summary['total'].get(nutrient, 0) 
+        difference = total_nutrient_value - goal_value
+
+        print(f"  {nutrient.capitalize()}:")
+        print(f"    Goal: {goal_value}")
+        print(f"    Actual : {total_nutrient_value:.2f}")
+        print(f"    Difference: {difference:.2f}")
 
     return nutrition_summary
 
-# Visualize nutrition data
+
+# Visualize nutrition data per day
 def visualize_nutrition_data(nutrition_summary):
-    nutrients = list(nutrition_summary['comparison'].keys())
-    goals = [nutrition_summary['comparison'][n]['goal'] for n in nutrients]
-    actuals = [nutrition_summary['comparison'][n]['actual'] for n in nutrients]
+    days = nutrition_summary['daily'].keys()
+    nutrients = list(nutrition_summary['total'].keys())
+    
+    # Create a list of daily values for each nutrient
+    daily_values = {nutrient: [] for nutrient in nutrients}
+    for day in days:
+        for nutrient in nutrients:
+            daily_values[nutrient].append(nutrition_summary['daily'].get(day, {}).get(nutrient, 0))
 
-    fig, ax = plt.subplots()
-    ax.bar(nutrients, goals, label="Goal", color='blue', alpha=0.6)
-    ax.bar(nutrients, actuals, label="Actual", color='red', alpha=0.7)
+    # Plotting
+    fig, ax = plt.subplots(figsize=(10, 6))
+    bar_width = 0.1
+    x = list(range(len(days)))
+    
+    for i, nutrient in enumerate(nutrients):
+        ax.bar(
+            [p + bar_width * i for p in x],
+            daily_values[nutrient],
+            width=bar_width,
+            label=nutrient
+        )
 
-    ax.set_xlabel("Nutrients")
-    ax.set_ylabel("Amount")
-    ax.set_title("Nutritional Goal vs Actual Intake")
+    ax.set_xticks([p + bar_width * (len(nutrients) / 2) for p in x])
+    ax.set_xticklabels(days)
+    ax.set_xlabel("Days")
+    ax.set_ylabel("Nutrient Amount")
+    ax.set_title("Daily Nutritional Intake")
     ax.legend()
+    plt.xticks(rotation=45)
+    plt.tight_layout()
     plt.show()
+
 
 # Main Function
 def main():
