@@ -9,10 +9,10 @@ analysis.
 3. Ensure you have 'ingredients.csv' and 'preferences.json' in the
 project directory
 4. Run the main script:
-python myProject.py
+python Project.py
 ## Running Tests
 To run the unit tests:
-python -m unittest test_myProject.py
+python -m unittest test_Project.py
 ## Features
 - Recipe recommendation based on available ingredients and dietary
 preferences
@@ -25,4 +25,4 @@ preferences
 - `preferences.json`: JSON file containing user preferences and
 nutritional goals
 - `requirements.txt`: List of required Python packages
-- `test_myProject.py`: Unit tests for the project
+- `test_Project.py`: Unit tests for the project
