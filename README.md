@@ -23,6 +23,7 @@ preferences
 - `project.py`: Main script containing all functions
 - `ingredients.csv`: CSV file containing available ingredients
 - `preferences.json`: JSON file containing user preferences and
+- `unit_test.py`: Unit Test file
 nutritional goals
 - `requirements.txt`: List of required Python packages
 - `test_project.py`: Unit tests for the project
