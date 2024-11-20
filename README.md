@@ -26,4 +26,5 @@ preferences
 - `unit_test.py`: Unit Test file
 nutritional goals
 - `requirements.txt`: List of required Python packages
+- `Project Report`: A report on the algorithms used for this project and how they work
 
