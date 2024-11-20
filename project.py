@@ -55,10 +55,10 @@ recipe_nutrition = {
     "overnight oats": {'calories': 250, 'protein': 8, 'carbs': 35, 'fat': 8, 'fiber': 10},
     "quinoa salad": {'calories': 300, 'protein': 10, 'carbs': 40, 'fat': 10, 'fiber': 7},
     "turkey sandwich": {'calories': 350, 'protein': 20, 'carbs': 30, 'fat': 15, 'fiber': 3},
-    "Egg Muffins": {'calories' : 150, 'protein' : 12, 'carbs' : 2, 'fat' : 10, 'fiber' : 2},
-    "Zucchini Noodles" : {"ingredients" : {'calories' : 250, 'protein' : 20, 'carbs' : 5, 'fat' : 15, 'fiber' : 2.5},
-    "Avocado Deviled Eggs" : {'calories' : 90, 'protein' : 6, 'carbs' : 1, 'fat' : 7, 'fiber' : 9},
-    "Cauliflower Fried Rice" : {'calories' : 200 , 'protein' :10 , 'carbs' : 7, 'fat' : 12, 'fiber' : 14}
+    "Egg Muffins": {'calories': 150, 'protein': 12, 'carbs': 2, 'fat': 10, 'fiber': 2},
+    "Zucchini Noodles" : {'calories': 250, 'protein' : 20, 'carbs': 5, 'fat': 15, 'fiber': 2.5},
+    "Avocado Deviled Eggs" : {'calories': 90, 'protein': 6, 'carbs': 1, 'fat': 7, 'fiber': 9},
+    "Cauliflower Fried Rice" : {'calories': 200 , 'protein': 10 , 'carbs': 7, 'fat': 12, 'fiber':14}
 }
 
 # Read Ingredients CSV
