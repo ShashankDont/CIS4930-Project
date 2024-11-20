@@ -26,7 +26,11 @@ recipes = {
     "shrimp pasta" : {"ingredients" : {"pasta" : 100, "shrimp" : 100, "garlic" : 10, "olive oil" : 10}, "diet" : "high-protein"},
     "overnight oats" : {"ingredients" : {"oats" : 50, "almond milk" : 100, "banana" : 1, "chia seeds" : 10}, "diet" : "vegan"},
     "quinoa salad" : {"ingredients" : {"quinoa" : 100, "chickpeas" : 50, "bell pepper" : 20, "cucumber" : 20, "olive oil" : 10}, "diet" : "vegan"},
-    "turkey sandwich" : {"ingredients" : {"bread" : 2, "turkey breast" : 50, "lettuce" : 10, "tomato" : 10, "mustard" : 5}, "diet" : "low-carb"}
+    "turkey sandwich" : {"ingredients" : {"bread" : 2, "turkey breast" : 50, "lettuce" : 10, "tomato" : 10, "mustard" : 5}, "diet" : "low-carb"},
+    "Egg Muffins": {"ingredients" : {'eggs' : 6, 'spinach' : 1, 'cherry tomatoes' : 120, 'cheece' : 130}, "diet" : "low-carb"},
+    "Zucchini Noodles" : {"ingredients" : {'zucchini' : 2, 'shrimp' : 340, 'garlic' : 3, 'olive oil' : 30, 'butter' : 30, 'parmesan cheese' : 85}, "diet" : "low-carb"},
+    "Avocado Deviled Eggs" : {"ingredients" : {'eggs' : 6, 'avocado' : 1, 'lime juice' : 15, 'garlic powder' : 7.5, 'paprika' : 1.5}, "diet" : "low-carb"},
+    "Cauliflower Fried Rice" : {"ingredients" : {'cauliflower rice' : 400, 'eggs' : 100, 'carrots' : 60, 'peas' : 60, 'soy sauce' : 30, 'green onions' : 20, 'garlic' : 6, 'sesame oil' : 14, 'olive oil' : 14}, "diet" : "low-carb"}
 }
 
 recipe_nutrition = {
@@ -50,7 +54,11 @@ recipe_nutrition = {
     "shrimp pasta": {'calories': 400, 'protein': 25, 'carbs': 50, 'fat': 15, 'fiber': 3},
     "overnight oats": {'calories': 250, 'protein': 8, 'carbs': 35, 'fat': 8, 'fiber': 10},
     "quinoa salad": {'calories': 300, 'protein': 10, 'carbs': 40, 'fat': 10, 'fiber': 7},
-    "turkey sandwich": {'calories': 350, 'protein': 20, 'carbs': 30, 'fat': 15, 'fiber': 3}
+    "turkey sandwich": {'calories': 350, 'protein': 20, 'carbs': 30, 'fat': 15, 'fiber': 3},
+    "Egg Muffins": {'calories' : 150, 'protein' : 12, 'carbs' : 2, 'fat' : 10, 'fiber' : 2},
+    "Zucchini Noodles" : {"ingredients" : {'calories' : 250, 'protein' : 20, 'carbs' : 5, 'fat' : 15, 'fiber' : 2.5},
+    "Avocado Deviled Eggs" : {'calories' : 90, 'protein' : 6, 'carbs' : 1, 'fat' : 7, 'fiber' : 9},
+    "Cauliflower Fried Rice" : {'calories' : 200 , 'protein' :10 , 'carbs' : 7, 'fat' : 12, 'fiber' : 14}
 }
 
 # Read Ingredients CSV
