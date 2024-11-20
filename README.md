@@ -12,7 +12,7 @@ project directory
 python project.py
 ## Running Tests
 To run the unit tests:
-python -m unittest test_project.py
+python unit_test.py
 ## Features
 - Recipe recommendation based on available ingredients and dietary
 preferences
