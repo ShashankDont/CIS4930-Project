@@ -78,6 +78,8 @@ def read_user_preferences(file_path):
 # Suggest meals based on available ingredients and user preferences
 def recommend_recipes(ingredients, preferences):
     recommended_recipes = []
+    
+    # If the diet of the user prefrence and recipe match add it to dict
     for recipe, details in recipes.items():
         if details["diet"] == preferences["diet"]:
             recommended_recipes.append(recipe)
@@ -85,6 +87,7 @@ def recommend_recipes(ingredients, preferences):
 
 # Create a meal plan for the week
 def create_meal_plan(recommended_recipes):
+    # Choose a random recipe for each day from reccomened_recipes dict
     days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
     meal_plan = {day: random.choice(recommended_recipes) for day in days}
     return meal_plan
@@ -93,25 +96,34 @@ def create_meal_plan(recommended_recipes):
 def generate_shopping_list(meal_recipes, ingredients): 
     shopping_list = {}
 
+    # Go through each recipe in each day
     for day, recipe_name in meal_recipes.items():
         recipe_ingredients = recipes[recipe_name]["ingredients"]
+        
+        # Go through each ingrident in the recipe
         for item, required_qty in recipe_ingredients.items():
-            unit = ingredients.get(item, {}).get("unit", "units") 
+            unit = ingredients.get(item, {}).get("unit", "units") # Get the unit of ingredient 
+            
+            # If ingridient already in shopping list set the avaiable to 0 
+            # Else get the amount from starting ingredients
             if item in shopping_list:
                 available_qty = 0
             else:
                 available_qty = ingredients.get(item, {}).get("quantity", 0)
             
+            # If avaiable ingridients less then starting add to list
             if available_qty < required_qty:    
                 needed_qty = required_qty - available_qty
                 if item in shopping_list:
                     shopping_list[item]["quantity"] += needed_qty
                 else:
                     shopping_list[item] = {"quantity": needed_qty, "unit": unit}
+            # If avabile ingridents equal to require add ingredient to list with 0 
             elif available_qty == required_qty:
                 if item not in shopping_list:
                     shopping_list[item] = {"quantity": 0, "unit": unit}
     
+    # Check and remove any ingredients in list with 0 quantity
     shopping_list = {item: details for item, details in shopping_list.items() if details["quantity"] > 0}
     return shopping_list
 
@@ -120,6 +132,7 @@ def generate_shopping_list(meal_recipes, ingredients):
 def analyze_nutrition(meal_plan, preferences):
     nutrition_summary = {'total': {}, 'daily': {}, 'comparison': {}}
 
+    # Print out the nutrional values of prefered diet
     print("User's Nutritional Preferences:")
     for nutrient, goal_value in preferences['nutritional_goals'].items():
         print(f"  {nutrient.capitalize()}: {goal_value} total")
@@ -195,6 +208,7 @@ def main():
     available_ingredients = read_ingredients(ingredients_file)
     user_prefs = read_user_preferences(preferences_file)   
     
+    # User input of their prefered diet from 4 options
     while True:
         try:
             preference_input = int(input("Enter a number 1-4 (1: Vegetarian  2: Vegan  3: High Protein  4: Low Carb): "))
@@ -207,11 +221,13 @@ def main():
             
     preference_input -= 1
     
+    # Calls the functions to create meal plan and shopping list
     recommended_recipes = recommend_recipes(available_ingredients, user_prefs["user_preferences"][preference_input])
     meal_plan = create_meal_plan(recommended_recipes)
     shopping_list = generate_shopping_list(meal_plan, available_ingredients)
     nutrition_summary = analyze_nutrition(meal_plan, user_prefs["user_preferences"][preference_input])
 
+    # Writes meal plan and shopping list to a file
     with open('meal_plan.txt', 'w') as file:
         file.write("Weekly Meal Plan:\n")
         for day, meal in meal_plan.items():
